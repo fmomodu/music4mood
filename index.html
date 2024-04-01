@@ -13,7 +13,7 @@
     <h1 class="text">Welcome to [music 4 mood]</h1>
 
     <div class="info-text">
-      <p1 class="text1 delayed">first I need some information from you!</p1>
+      <p1 class="text1 delayed">first, I need some information from you!</p1>
     </div>
 
   </div>
@@ -28,10 +28,13 @@
     <label for="lname">last name:</label>
     <input type="text" id="lname" name="lname" placeholder="ur dad">
   </div>
+
   <div>
     <input type="submit" value="Submit">
   </div>
+
 </form>
+
   <div id="swiper">
     <div class="card"></div>
   </div>
@@ -39,10 +42,11 @@
   <script>
     function showLoadingPage(event) {
       event.preventDefault(); // Prevent the default form submission behavior
+      const firstName
       window.location.href = 'loading.html'; // Redirect to the loading page
-
     }
   </script>
+
   <script src="script.js"></script>
 </body>
 </html>
