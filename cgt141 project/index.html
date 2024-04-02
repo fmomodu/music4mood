@@ -1,13 +1,52 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-	<meta charrset = "UTF-8">
-	<meta http-equiv="X-UA-Compatible" content= "IE-edge">
-	<meta name= "viewport" content= "width=device-width, initial-scale=1.0">
-	<link rel= "stylesheet" href= "style.css">
-	<title> MAIN PAGE </title>
-	<p1> hi! </p1>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>MAIN PAGE</title>
+  <script src="//code.jquery.com/jquery-3.5.1.min.js"></script> <--trying to make css work on github-->
 </head>
 <body>
+  <div class="container">
+    <h1 class="text">Welcome to [music 4 mood]</h1>
+
+    <div class="info-text">
+      <p1 class="text1 delayed">first, I need some information from you!</p1>
+    </div>
+
+  </div>
+
+  <form id="myForm">
+  <div>
+    <label for="fname">first name:</label>
+    <input type="text" id="fname" name="fname" placeholder="ur mom">
+  </div>
+  <br>
+  <div>
+    <label for="lname">last name:</label>
+    <input type="text" id="lname" name="lname" placeholder="ur dad">
+  </div>
+
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+
+</form>
+
+  <div id="swiper">
+    <div class="card"></div>
+  </div>
+
+  <script>
+    function showLoadingPage(event) {
+      event.preventDefault(); // Prevent the default form submission behavior
+      const firstName
+      window.location.href = 'loading.html'; // Redirect to the loading page
+    }
+  </script>
+
+  <script src="script.js"></script>
 </body>
 </html>
