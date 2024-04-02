@@ -20,6 +20,22 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    btn.addEventListener('click', function() {
+  const selectedMood = this.dataset.mood;
+
+  // Retrieve the existing userData from localStorage
+  const storedUserData = JSON.parse(localStorage.getItem('userData')) || {};
+
+  // Update the userData with the selected mood
+  storedUserData.mood = selectedMood;
+
+  // Store the updated userData in localStorage
+  localStorage.setItem('userData', JSON.stringify(storedUserData));
+
+  // Redirect to the loading songs page
+  window.location.href = 'loading_songs.html';
+});
+  </script>
 </body>
 </html>

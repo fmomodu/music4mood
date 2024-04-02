@@ -1,3 +1,14 @@
+function showLoadingPage(event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+
+  const firstName = document.getElementById('fname').value;
+  const lastName = document.getElementById('lname').value;
+
+  // You may want to store the form data or pass it as a query parameter
+  // to the loading.html page
+
+  window.location.href = 'loading.html'; // Redirect to the loading page
+}
 // Get references to the form and input fields
 const form = document.getElementById('myForm');
 const firstNameInput = document.getElementById('fname');
@@ -23,16 +34,21 @@ form.addEventListener('submit', function(event) {
   // Redirect to the loading page
   window.location.href = 'loading.html';
 });
-const moodBtns = document.querySelectorAll('.mood-btn');
+document.addEventListener('DOMContentLoaded', function() {
+  // Get references to all mood buttons
+  const moodBtns = document.querySelectorAll('.mood-btn');
 
-moodBtns.forEach(btn => {
-  btn.addEventListener('click', function() {
-    const selectedMood = this.dataset.mood;
-    const storedUserData = JSON.parse(localStorage.getItem('userData')) || {};
-    storedUserData.mood = selectedMood;
-    localStorage.setItem('userData', JSON.stringify(storedUserData));
+  // Add click event listener to each mood button
+  moodBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Get the selected mood from the data-mood attribute
+      const selectedMood = this.dataset.mood;
+      
+      // Store the selected mood in localStorage if needed
+      localStorage.setItem('selectedMood', selectedMood);
 
-    // Redirect to the next page or perform any other desired action
-    window.location.href = 'next-page.html';
+      // Redirect to the loading songs page
+      window.location.href = 'loading_songs.html';
+    });
   });
 });
