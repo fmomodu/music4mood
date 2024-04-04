@@ -19,17 +19,15 @@
   </div>
 
   <form id="myForm"> <!--form fields-->
-  <!--js to attach submit event lister-->
-  <script> const form = document.getElementById('myForm');
-  form.addEventListener('submit', showLoadingPage); </script> 
+ 
   <div>
     <label for="fname">first name:</label>
-    <input type="text" id="fname" name="fname" placeholder="ur mom">
+    <input type="text" id="fname" name="fname" placeholder="ur mom" required>
   </div>
   <br>
   <div>
     <label for="lname">last name:</label>
-    <input type="text" id="lname" name="lname" placeholder="ur dad">
+    <input type="text" id="lname" name="lname" placeholder="ur dad" required>
   </div>
 
   <div>
@@ -38,15 +36,24 @@
 
 </form>
 
-  <div id="swiper">
-    <div class="card"></div>
-  </div>
-
   <script>
     function showLoadingPage(event) {
       event.preventDefault(); // Prevent the default form submission behavior
-      const firstName
-      window.location.href = 'loading.html'; // Redirect to the loading page
+
+      const firstNameInput = document.getElementById('fname');
+      const lastNameInput = document.getElementById('lname');
+
+      const firstName = firstNameInput.value;
+      const lastName = lastNameInput.value;
+
+      // Option 1: Pass form values as query parameters
+      const url = `loading.html?fname=${encodeURIComponent(firstName)}&lname=${encodeURIComponent(lastName)}`;
+      window.location.href = url;
+
+      // Option 2: Store form values in localStorage (or sessionStorage)
+      // localStorage.setItem('firstName', firstName);
+      // localStorage.setItem('lastName', lastName);
+      // window.location.href = 'loading.html';
     }
   </script>
 
