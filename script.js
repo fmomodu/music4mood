@@ -1,54 +1,26 @@
 function showLoadingPage(event) {
   event.preventDefault(); // Prevent the default form submission behavior
 
-  const firstName = document.getElementById('fname').value;
-  const lastName = document.getElementById('lname').value;
+  const firstNameInput = document.getElementById('fname');
+  const lastNameInput = document.getElementById('lname');
 
-  // You may want to store the form data or pass it as a query parameter
-  // to the loading.html page
+  const firstName = firstNameInput.value;
+  const lastName = lastNameInput.value;
 
-  window.location.href = 'loading.html'; // Redirect to the loading page
+  // Option 1: Pass form values as query parameters
+  const url = `loading.html?fname=${encodeURIComponent(firstName)}&lname=${encodeURIComponent(lastName)}`;
+  window.location.href = url;
+
+  // Option 2: Store form values in localStorage (or sessionStorage)
+  // localStorage.setItem('firstName', firstName);
+  // localStorage.setItem('lastName', lastName);
+  // window.location.href = 'loading.html';
 }
+
 // Get references to the form and input fields
 const form = document.getElementById('myForm');
 const firstNameInput = document.getElementById('fname');
 const lastNameInput = document.getElementById('lname');
 
 // Add an event listener to the form's submit event
-form.addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission behavior
-
-  // Get the values of the input fields
-  const firstName = firstNameInput.value;
-  const lastName = lastNameInput.value;
-
-  // Save the values to a JavaScript object or perform any other desired actions
-  const userData = {
-    firstName: firstName,
-    lastName: lastName
-  };
-
-  // Log the user data to the console for demonstration
-  console.log('User Data:', userData);
-
-  // Redirect to the loading page
-  window.location.href = 'loading.html';
-});
-document.addEventListener('DOMContentLoaded', function() {
-  // Get references to all mood buttons
-  const moodBtns = document.querySelectorAll('.mood-btn');
-
-  // Add click event listener to each mood button
-  moodBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      // Get the selected mood from the data-mood attribute
-      const selectedMood = this.dataset.mood;
-      
-      // Store the selected mood in localStorage if needed
-      localStorage.setItem('selectedMood', selectedMood);
-
-      // Redirect to the loading songs page
-      window.location.href = 'loading_songs.html';
-    });
-  });
-});
+form.addEventListener('submit', showLoadingPage);

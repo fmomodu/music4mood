@@ -1,14 +1,21 @@
-// Get all mood buttons
-const moodButtons = document.querySelectorAll('.mood-btn');
+// mood.js
+import { navigateToSwiper } from './swiper.js';
 
-// Add event listeners to the mood buttons
-moodButtons.forEach((btn) => {
-  btn.addEventListener('click', handleMoodButtonClick);
+document.addEventListener('DOMContentLoaded', function() {
+  // Get references to all mood buttons
+  const moodBtns = document.querySelectorAll('.mood-btn');
+
+  // Add click event listener to each mood button
+  moodBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Get the selected mood from the data-mood attribute
+      const selectedMood = this.dataset.mood;
+
+      // Store the selected mood in localStorage
+      localStorage.setItem('selectedMood', selectedMood);
+
+      // Redirect to the swiper page
+      navigateToSwiper();
+    });
+  });
 });
-
-// Function to handle mood button clicks
-function handleMoodButtonClick(event) {
-  const mood = event.target.dataset.mood;
-  console.log(`Selected mood: ${mood}`);
-  // Here, you can add the logic to navigate to the swiper page or update the swiper
-}
