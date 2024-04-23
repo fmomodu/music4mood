@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
   const songs = [
-    { title: 'Chanel', artist: 'Frank Ocean', albumCover: 'images/chanel.jpeg' },
-    { title: 'Can You Feel My Heart', artist: 'Bring Me The Horizon', albumCover: 'images/cyfmh.jpg' },
-    { title: 'Hiss', artist: 'Megan The Stallion' , albumCover: 'images/hiss.jpg' },
-    { title: 'IFHY', artist: 'Tyler the Creator' , albumCover: 'images/ifhy.png' },
-    { title: 'Potential Breakup Song', artist: 'Aly & AJ' , albumCover: 'images/PBS.jpg' },
-    { title: 'Plan B', artist: 'Megan The Stallion' , albumCover: 'images/planb.png' },
-    { title: 'Smack a Bitch', artist: 'Rico Nasty' , albumCover: 'images/sab.jpg' },
+    { title: 'She', artist: 'Tyler the Creator', albumCover: 'images/she.jpg' },
+    { title: 'Stargirl Interlude', artist: 'The Weekend, Lana Del Rey', albumCover: 'images/si.jpg' },
+    { title: 'say im ur luv', artist: 'UMI' , albumCover: 'images/siul.jpg' },
+    { title: 'Shy', artist: 'Leon Bridges' , albumCover: 'images/shy.jpg' },
+    { title: 'Home', artist: 'Edward Sharpe & The Magnetic Zeros' , albumCover: 'images/home.jpg' },
+    { title: 'Dying for You!', artist: 'Prince of Eden' , albumCover: 'images/dfy.jpg' },
+    { title: 'All I Really Want Is You', artist: 'The Marias' , albumCover: 'images/wantisyou.jpg' },
     { title: 'Washing Machine Heart', artist: 'Mitski' , albumCover: 'images/wmh.png' },
     { title: 'Supermassive Black Hole', artist: 'Muse' , albumCover: 'images/sbh.png' },
     { title: 'Green Honda', artist: 'Benee' , albumCover: 'images/gh.png' },
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     songElement.classList.add('song');
     songElement.innerHTML = `
       <img src="${song.albumCover}" alt="Album Cover">
-      <h3>Song:${song.title}</h3>
+      <h3>Song: ${song.title}</h3>
       <h3>Artist: ${song.artist}</h3>
       <button class="like-btn">&#x2665;</button> <!-- Unicode character for heart -->
       <button class="dislike-btn">&#x2718;</button> <!-- Unicode character for crossed-out symbol (✘) -->
@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.target.classList.contains('dislike-btn')) {
       renderNextSong();
     }
-
   });
   // Additional logic to handle user selection of another mood
   const yesButton = document.getElementById('yesBtn');
@@ -88,5 +87,4 @@ document.addEventListener('DOMContentLoaded', function() {
       addSongs(newSongs);
     });
   }
-
 });

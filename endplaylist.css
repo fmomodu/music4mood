@@ -25,8 +25,8 @@ h2 {
 }
 
 .song img {
-  max-width: 400px;
-  max-height: 400px;
+  max-width: 40px;
+  max-height: 40px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 2, 0, 0.1);
 }
@@ -49,8 +49,8 @@ h2 {
 }
 
 .card img {
-  width: 100%;
-  height: 200px;
+  width: 20px;
+  height: 20px;
   object-fit: cover;
 }
 
@@ -79,52 +79,4 @@ h2 {
 .song {
   position: relative;
   text-align: center;
-}
-
-.like-btn {
-  width: 50px;
-  height: 50px;
-  background-color: darkred; /* Background color */
-  border: 2px solid white; 
-  border-radius: 50%; /* Rounded corners */
-  padding: 5px; /* Padding */
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: calc(100% - 50px); /* Pushes the button to the right */
-  transform: translateY(-50%);
-}
-
-.like-btn:before {
-  content: '\2665';
-  font-size: 30px;
-  color: white; /* Color of the heart symbol */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.dislike-btn {
-  width: 50px;
-  height: 50px;
-  background-color: white; /* White background */
-  border: 2px solid red; /* Red border */
-  border-radius: 50%; /* Rounded corners */
-  padding: 5px; /* Padding */
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  right: calc(100% - 50px); /* Pushes the button to the left */
-  transform: translateY(-50%);
-}
-
-.dislike-btn:before {
-  content: '\2718';
-  font-size: 30px; /* Adjust font size */
-  color: red; /* Red color */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }

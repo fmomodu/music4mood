@@ -11,13 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
     { title: 'Supermassive Black Hole', artist: 'Muse' , albumCover: 'images/sbh.png' },
     { title: 'Green Honda', artist: 'Benee' , albumCover: 'images/gh.png' },
     // Add more songs as needed { title: '', artist: '' , albumCover: 'images/.png' },
-
   ];
 
   const songContainer = document.getElementById('song-container');
   const playlist = document.getElementById('playlist');
 
-  const likedSongs = []; // Array to store liked songs
+  const likedSongs = JSON.parse(sessionStorage.getItem('likedSongs')) || []; // Array to store liked songs
   let currentSongIndex = 0;
 
   function renderNextSong() {
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
       sessionStorage.setItem('likedSongs', JSON.stringify(likedSongs));
       // Redirect to the playlist complete page
       window.location.href = 'nomoresongs.html';
-       
     }
   }
 
@@ -41,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     songElement.classList.add('song');
     songElement.innerHTML = `
       <img src="${song.albumCover}" alt="Album Cover">
-      <h3>Song:${song.title}</h3>
+      <h3>Song: ${song.title}</h3>
       <h3>Artist: ${song.artist}</h3>
       <button class="like-btn">&#x2665;</button> <!-- Unicode character for heart -->
       <button class="dislike-btn">&#x2718;</button> <!-- Unicode character for crossed-out symbol (✘) -->
@@ -73,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.target.classList.contains('dislike-btn')) {
       renderNextSong();
     }
-
   });
+
   // Additional logic to handle user selection of another mood
   const yesButton = document.getElementById('yesBtn');
   if (yesButton) {
@@ -89,4 +87,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Function to add more songs
+  function addSongs(newSongs) {
+    songs.push(...newSongs);
+    renderNextSong();
+  }
 });

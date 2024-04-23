@@ -28,11 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
       songContainer.appendChild(songElement);
       currentSongIndex++;
     } else {
-      // Store liked songs in sessionStorage
-      sessionStorage.setItem('likedSongs', JSON.stringify(likedSongs));
-      // Redirect to the playlist complete page
-      window.location.href = 'nomoresongs.html';
-       
+      console.log('No more songs to load');
     }
   }
 
@@ -73,20 +69,5 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.target.classList.contains('dislike-btn')) {
       renderNextSong();
     }
-
   });
-  // Additional logic to handle user selection of another mood
-  const yesButton = document.getElementById('yesBtn');
-  if (yesButton) {
-    yesButton.addEventListener('click', function() {
-      // Logic to add more songs when user selects "Yes"
-      const newSongs = [
-        { title: 'New Song 1', artist: 'Artist 1', albumCover: 'images/new1.jpg' },
-        { title: 'New Song 2', artist: 'Artist 2', albumCover: 'images/new2.jpg' }
-        // Add more new songs as needed
-      ];
-      addSongs(newSongs);
-    });
-  }
-
 });
