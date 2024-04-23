@@ -1,38 +1,39 @@
-// swiper.js
-export function navigateToSwiper() {
-    // Navigate to the swiper page
-    window.location.href = 'swiper.html';
-}
-import { moodPlaylistMap } from './data.js';
+document.addEventListener('DOMContentLoaded', function() {
+    var swiper = new Swiper('.swiper-container', {
+        direction: 'horizontal',
+        loop: false, // Set loop to false
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
 
-// Initialize Swiper
-const swiper = new Swiper('#swiper', {
-  direction: 'horizontal',
-  loop: true,
-  // Other Swiper options
+    // Example playlist data
+    const playlist = [
+        { title: 'Chanel', artist: 'Frank Ocean', albumCover: 'images/chanel.jpeg' },
+        { title: 'Can You Feel My Heart', artist: 'Bring Me The Horizon', albumCover: 'images/cyfmh.jpg' },
+        { title: 'Hiss', artist: 'Megan The Stallion' , albumCover: 'images/hiss.jpg' },
+        { title: 'Washing Machine Heart', artist: 'Mitski' , albumCover: 'images/wmh.png' },
+        { title: 'Supermassive Black Hole', artist: 'Muse' , albumCover: 'images/sbh.png' },
+        { title: 'Plan B', artist: 'Megan The Stallion' , albumCover: 'images/planb.png' },
+        { title: 'IFHY', artist: 'Tyler The Creator' , albumCover: 'images/ifhy.png' },
+        // Add more songs as needed
+    ];
+
+    // Create the Swiper slides based on the playlist
+    playlist.forEach((song) => {
+        // Dynamically create slide elements
+        const slide = document.createElement('div');
+        slide.classList.add('swiper-slide');
+
+        // Create an img element for the album cover
+        const img = document.createElement('img');
+        img.src = song.albumCover;
+        img.alt = song.title;
+
+        // Append elements to the slide
+        slide.appendChild(img);
+
+        // Append the slide to the Swiper container
+        swiper.appendSlide(slide);
+    });
 });
-
-// Get the selected mood from the localStorage
-const selectedMood = localStorage.getItem('selectedMood');
-
-// Get the playlist for the selected mood
-const playlist = moodPlaylistMap[selectedMood];
-
-// Create the Swiper slides based on the playlist
-playlist.forEach((item, index) => {
-  const card = createCard(item.imageUrl, index);
-  swiper.wrapper.appendChild(card);
-});
-
-// Function to create a card element
-function createCard(imageUrl, index) {
-  const card = document.createElement('div');
-  card.classList.add('card');
-  card.style.setProperty('--i', index);
-
-  const img = document.createElement('img');
-  img.src = `img/${imageUrl}`;
-  card.appendChild(img);
-
-  return card;
-}
