@@ -1,23 +1,26 @@
+//angry.js
 document.addEventListener('DOMContentLoaded', function() {
   const songs = [
-    { title: 'Chanel', artist: 'Frank Ocean', albumCover: 'images/chanel.jpeg' },
-    { title: 'Can You Feel My Heart', artist: 'Bring Me The Horizon', albumCover: 'images/cyfmh.jpg' },
-    { title: 'Hiss', artist: 'Megan The Stallion' , albumCover: 'images/hiss.jpg' },
-    { title: 'IFHY', artist: 'Tyler the Creator' , albumCover: 'images/ifhy.png' },
-    { title: 'Potential Breakup Song', artist: 'Aly & AJ' , albumCover: 'images/PBS.jpg' },
-    { title: 'Plan B', artist: 'Megan The Stallion' , albumCover: 'images/planb.png' },
-    { title: 'Smack a Bitch', artist: 'Rico Nasty' , albumCover: 'images/sab.jpg' },
-    { title: 'Washing Machine Heart', artist: 'Mitski' , albumCover: 'images/wmh.png' },
-    { title: 'Supermassive Black Hole', artist: 'Muse' , albumCover: 'images/sbh.png' },
-    { title: 'Green Honda', artist: 'Benee' , albumCover: 'images/gh.png' },
-    // Add more songs as needed { title: '', artist: '' , albumCover: 'images/.png' },
+    { title: 'She', artist: 'Tyler the Creator', albumCover: 'images/she.jpg' },
+    { title: 'Stargirl Interlude', artist: 'The Weekend, Lana Del Rey', albumCover: 'images/si.jpg' },
+    { title: 'say im ur luv', artist: 'UMI', albumCover: 'images/siul.jpg' },
+    { title: 'Shy', artist: 'Leon Bridges', albumCover: 'images/shy.jpg' },
+    { title: 'Home', artist: 'Edward Sharpe & The Magnetic Zeros', albumCover: 'images/home.jpg' },
+    { title: 'Dying for You!', artist: 'Prince of Eden', albumCover: 'images/dfy.jpg' },
+    { title: 'All I Really Want Is You', artist: 'The Marias', albumCover: 'images/wantisyou.jpg' },
+    { title: 'Washing Machine Heart', artist: 'Mitski', albumCover: 'images/wmh.png' },
+    { title: 'Supermassive Black Hole', artist: 'Muse', albumCover: 'images/sbh.png' },
+    { title: 'Green Honda', artist: 'Benee', albumCover: 'images/gh.png' },
+    // Add more songs as needed { title: '', artist: '', albumCover: 'images/.png' },
   ];
 
   const songContainer = document.getElementById('song-container');
   const playlist = document.getElementById('playlist');
-
-  const likedSongs = JSON.parse(sessionStorage.getItem('likedSongs')) || []; // Array to store liked songs
+  const likedSongs = []; // Array to store liked songs
   let currentSongIndex = 0;
+
+  // Retrieve the allLikedSongs array from sessionStorage or initialize a new array
+  let allLikedSongs = JSON.parse(sessionStorage.getItem('allLikedSongs')) || [];
 
   function renderNextSong() {
     if (currentSongIndex < songs.length) {
@@ -52,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     li.textContent = `${song.title} - ${song.artist}`;
     playlist.appendChild(li);
     likedSongs.push(song); // Add liked song to the array
+    allLikedSongs.push(song); // Add liked song to the allLikedSongs array
   }
 
   // Load the first song
@@ -62,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (event.target.classList.contains('like-btn')) {
       const song = songs[currentSongIndex - 1];
       likedSongs.push(song); // Add liked song to the array
+      allLikedSongs.push(song); // Add liked song to the allLikedSongs array
       renderNextSong();
     }
   });
@@ -69,6 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Event listener for dislike button
   document.addEventListener('click', function(event) {
     if (event.target.classList.contains('dislike-btn')) {
+      // Store the allLikedSongs array in sessionStorage or localStorage
+      sessionStorage.setItem('allLikedSongs', JSON.stringify(allLikedSongs));
       renderNextSong();
     }
   });
@@ -85,11 +92,5 @@ document.addEventListener('DOMContentLoaded', function() {
       ];
       addSongs(newSongs);
     });
-  }
-
-  // Function to add more songs
-  function addSongs(newSongs) {
-    songs.push(...newSongs);
-    renderNextSong();
   }
 });

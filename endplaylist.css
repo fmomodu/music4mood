@@ -1,82 +1,39 @@
-/* Reset styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* endplaylist.css */
+.container {
+  max-width: 800px; /* Adjust this value as needed */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
 body {
-  display: flex;
-  flex-direction: column; /* Changed from 'justify-content' to 'flex-direction' */
-  align-items: center;
-  min-height: 100vh;
-  background-color: orangered;
+  background-color: cadetblue;
 }
-
-.container {
-  text-align: center;
-}
-
 h2 {
-  font-size: 77px;
-  font-feature-settings: ;
-  margin-bottom: 20px;
-  color: darkred;
+  color: darkolivegreen;
 }
 
-.song img {
-  max-width: 40px;
-  max-height: 40px;
+#likedSongs div {
+  /*display: inline-block; */ /* Display the song divs side by side */
+  margin: 10px; /* Add some spacing between the song divs */
+}
+
+#likedSongs div img {
+  max-width: 400px;
+  max-height: 400px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 2, 0, 0.1);
 }
-
-/*.card {
-  width: 300px;
-  height: 400px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  position: relative;
-  margin: 20px;
-  display: inline-block;
-  background-color: #fff;
-  transition: transform 0.3s ease;
-} */
-
-.card:hover {
-  transform: translateY(-5px);
+/* endplaylist.css */
+#likedSongs div > p:nth-child(1) {
+  /* Styles for the title */
+  font-size: 24px;
+  font-weight: bold;
+  color: floralwhite;
+  margin-bottom: 5px;
 }
 
-.card img {
-  width: 20px;
-  height: 20px;
-  object-fit: cover;
-}
-
-.card .content {
-  padding: 20px;
-}
-
-.card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 16px;
-  color: #555;
-}
-
-/* Media Query for responsiveness */
-@media (max-width: 768px) {
-  .card {
-    width: calc(50% - 40px); /* Adjust width for smaller screens */
-    margin: 20px 20px 20px 0; /* Adjust margin for smaller screens */
-  }
-}
-
-.song {
-  position: relative;
-  text-align: center;
+#likedSongs div > p:nth-child(2) {
+  /* Styles for the artist */
+  font-size: 24px;
+  color: darkseagreen;
+  margin-bottom: 20px;
 }
